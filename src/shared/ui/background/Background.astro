@@ -1,0 +1,120 @@
+---
+import background from '~/assets/backgrounds/background.webp'
+---
+
+<div class="background" aria-hidden="true">
+  <div class="background-image" style={`background-image: url(${background.src});`}></div>
+</div>
+
+<style>
+  .background {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .background-image {
+    position: absolute;
+    inset: -15%;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    transform-origin: center;
+    animation: floating-background 6s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  @keyframes floating-background {
+    0% {
+      transform: translate3d(-5%, -2%, 0) scale(1.08) rotate(-1deg);
+    }
+
+    25% {
+      transform: translate3d(4%, -5%, 0) scale(1.14) rotate(1deg);
+    }
+
+    50% {
+      transform: translate3d(6%, 3%, 0) scale(1.18) rotate(-1deg);
+    }
+
+    75% {
+      transform: translate3d(-4%, 6%, 0) scale(1.14) rotate(1deg);
+    }
+
+    100% {
+      transform: translate3d(-5%, -2%, 0) scale(1.08) rotate(-1deg);
+    }
+  }
+
+  /* Tablets */
+  @media (max-width: 1024px) {
+    .background-image {
+      inset: -12%;
+      animation-duration: 7s;
+    }
+
+    @keyframes floating-background {
+      0% {
+        transform: translate3d(-4%, -2%, 0) scale(1.08) rotate(-0.8deg);
+      }
+
+      25% {
+        transform: translate3d(3%, -4%, 0) scale(1.12) rotate(0.8deg);
+      }
+
+      50% {
+        transform: translate3d(4%, 3%, 0) scale(1.15) rotate(-0.8deg);
+      }
+
+      75% {
+        transform: translate3d(-3%, 4%, 0) scale(1.12) rotate(0.8deg);
+      }
+
+      100% {
+        transform: translate3d(-4%, -2%, 0) scale(1.08) rotate(-0.8deg);
+      }
+    }
+  }
+
+  /* Móviles */
+  @media (max-width: 640px) {
+    .background-image {
+      inset: -10%;
+      background-position: center;
+      animation-duration: 8s;
+    }
+
+    @keyframes floating-background {
+      0% {
+        transform: translate3d(-3%, -1%, 0) scale(1.08) rotate(-0.6deg);
+      }
+
+      25% {
+        transform: translate3d(2%, -3%, 0) scale(1.11) rotate(0.6deg);
+      }
+
+      50% {
+        transform: translate3d(3%, 2%, 0) scale(1.14) rotate(-0.5deg);
+      }
+
+      75% {
+        transform: translate3d(-2%, 3%, 0) scale(1.11) rotate(0.5deg);
+      }
+
+      100% {
+        transform: translate3d(-3%, -1%, 0) scale(1.08) rotate(-0.6deg);
+      }
+    }
+  }
+
+  /* Reduce movimiento si el usuario lo solicita en su sistema */
+  @media (prefers-reduced-motion: reduce) {
+    .background-image {
+      animation: none;
+    }
+  }
+</style>

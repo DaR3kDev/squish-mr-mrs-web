@@ -1,0 +1,27 @@
+---
+import '~/app/styles/global.css'
+import Background from '~/shared/ui/background/Background.astro'
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <meta name="generator" content={Astro.generator} />
+
+    <title>Squish Mr & Mrs</title>
+  </head>
+
+  <body class="min-h-screen bg-[#070707] font-poppins text-white">
+    <Background />
+
+    <main class="relative min-h-screen">
+      <slot />
+    </main>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+name: Deploy Production Vercel
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-production:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build application
+        run: bun run build
+
+      - name: Deploy Production to Vercel
+        run: |
+          bunx vercel deploy --prod --yes \
+            --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
