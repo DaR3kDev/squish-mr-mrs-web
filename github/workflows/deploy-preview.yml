@@ -3,7 +3,7 @@ name: Deploy Preview Vercel
 on:
   push:
     branches:
-      - develop
+      - developer
 
 jobs:
   deploy-preview:
