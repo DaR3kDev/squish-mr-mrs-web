@@ -12,7 +12,7 @@ export default function ProductCard({ product, onAdd }: ProductCardProps) {
     <article className="overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-black/5">
       <div className="aspect-[4/3] overflow-hidden bg-neutral-100">
         <img
-          src={product.image}
+          src={typeof product.image === 'string' ? product.image : (product.image?.src ?? '')}
           alt={product.name}
           className="h-full w-full object-cover transition duration-300 hover:scale-105"
           loading="lazy"
